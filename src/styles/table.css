@@ -1,0 +1,14 @@
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .btn-danger {
+    color: white;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
