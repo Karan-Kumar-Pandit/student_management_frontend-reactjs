@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddStudentModal = ({ show, handleClose, refreshStudents, editStudentData }) => {
   const [updateFlag, setUpdateFlag] = useState(false);
@@ -55,11 +56,13 @@ const AddStudentModal = ({ show, handleClose, refreshStudents, editStudentData }
       if (updateFlag) {
         // Update Student (PUT Request)
         await axios.put(`http://localhost:3500/student/${editStudentData.StudentId}`, formData);
-        setResponseMessage("Student updated successfully!");
+        toast.success("Student update successfully!", { position: "top-right" });
+        // setResponseMessage("Student updated successfully!");
       } else {
         // Create New Student (POST Request)
         await axios.post("http://localhost:3500/student", formData);
-        setResponseMessage("Student added successfully!");
+        toast.success("Student added successfully!", { position: "top-right" });
+        // setResponseMessage("Student added successfully!");
       }
 
       refreshStudents(); // Refresh the student list after operation

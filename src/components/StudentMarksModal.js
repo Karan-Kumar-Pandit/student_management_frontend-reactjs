@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
+import { toast } from "react-toastify";
+
 
 const StudentMarksModal = ({ show, handleClose, refreshStudents, marksData }) => {
 
@@ -31,6 +33,7 @@ const StudentMarksModal = ({ show, handleClose, refreshStudents, marksData }) =>
     console.log(formData);
     try {
       await axios.post("http://localhost:3500/mark", formData);
+      toast.success("Marks added successfully!", { position: "top-right" });
       refreshStudents();
       handleClose();
       resetFormData();
